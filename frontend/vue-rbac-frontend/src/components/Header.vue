@@ -2,7 +2,7 @@
 <template>
   <header class="bg-blue-400 text-white px-6 py-3 flex justify-between items-center shadow-sm">
     <h1 class="text-lg font-bold flex items-center">
-      <span class="material-icons mr-2">Sistem Kendaraan</span>
+      <span class="material-icons mr-2">Tugas Integra 3</span>
     </h1>
     <div class="flex items-center space-x-4">
 <span class="text-base">Halo, {{ authStore.user?.username || 'User' }}</span>

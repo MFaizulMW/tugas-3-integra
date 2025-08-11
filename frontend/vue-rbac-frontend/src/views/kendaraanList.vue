@@ -21,60 +21,68 @@
     <div v-if="kendaraanStore.loading" class="text-gray-500">Memuat data...</div>
 
     <!-- Table -->
-    <table v-if="!kendaraanStore.loading && kendaraanStore.kendaraans.length" class="min-w-full bg-white border">
-      <thead class="bg-gray-100">
-        <tr>
-          <th class="px-4 py-2 border">#</th>
-          <th class="px-4 py-2 border">Kode</th>
-          <th class="px-4 py-2 border">Nama Kendaraan</th>
-          <th class="px-4 py-2 border">Tahun</th>
-          <th class="px-4 py-2 border">Jenis</th>
-          <th class="px-4 py-2 border">Nomor Polisi</th>
-          <th class="px-4 py-2 border">Mesin</th>
-          <th class="px-4 py-2 border">Warna</th>
-          <th class="px-4 py-2 border">Gambar</th>
-          <th class="px-4 py-2 border text-center">Aksi</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="(kendaraan, index) in kendaraanStore.kendaraans" :key="kendaraan.kendaraan_id">
-          <td class="px-4 py-2 border">{{ index + 1 }}</td>
-          <td class="px-4 py-2 border">{{ kendaraan.kendaraan_kode }}</td>
-          <td class="px-4 py-2 border">{{ kendaraan.kendaraan }}</td>
-          <td class="px-4 py-2 border">{{ kendaraan.kendaraan_tahun }}</td>
-          <td class="px-4 py-2 border">{{ kendaraan.kendaraan_jenis }}</td>
-          <td class="px-4 py-2 border">{{ kendaraan.kendaraan_nomor }}</td>
-          <td class="px-4 py-2 border">{{ kendaraan.kendaraan_mesin }}</td>
-          <td class="px-4 py-2 border">{{ kendaraan.kendaraan_warna }}</td>
-          <td class="px-4 py-2 border">
-            <img
-              v-if="kendaraan.image"
-              :src="kendaraan.image"
-              alt="gambar kendaraan"
-              class="w-16 h-10 object-cover"
-            />
-            <span v-else class="text-gray-400 italic">Tidak ada gambar</span>
-          </td>
-          <td class="px-4 py-2 border text-center space-x-2">
-            
-            <button
-                 v-if="canEdit"
+    <div
+      v-if="!kendaraanStore.loading && kendaraanStore.kendaraans.length"
+      class="overflow-hidden rounded-lg shadow-sm border border-gray-200"
+    >
+      <table class="min-w-full bg-white">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="px-4 py-2 border">#</th>
+            <th class="px-4 py-2 border">Kode</th>
+            <th class="px-4 py-2 border">Nama Kendaraan</th>
+            <th class="px-4 py-2 border">Tahun</th>
+            <th class="px-4 py-2 border">Jenis</th>
+            <th class="px-4 py-2 border">Nomor Polisi</th>
+            <th class="px-4 py-2 border">Mesin</th>
+            <th class="px-4 py-2 border">Warna</th>
+            <th class="px-4 py-2 border">Gambar</th>
+            <th class="px-4 py-2 border text-center">Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            v-for="(kendaraan, index) in kendaraanStore.kendaraans"
+            :key="kendaraan.kendaraan_id"
+            class="hover:bg-gray-50 transition"
+          >
+            <td class="px-4 py-2 border">{{ index + 1 }}</td>
+            <td class="px-4 py-2 border">{{ kendaraan.kendaraan_kode }}</td>
+            <td class="px-4 py-2 border">{{ kendaraan.kendaraan }}</td>
+            <td class="px-4 py-2 border">{{ kendaraan.kendaraan_tahun }}</td>
+            <td class="px-4 py-2 border">{{ kendaraan.kendaraan_jenis }}</td>
+            <td class="px-4 py-2 border">{{ kendaraan.kendaraan_nomor }}</td>
+            <td class="px-4 py-2 border">{{ kendaraan.kendaraan_mesin }}</td>
+            <td class="px-4 py-2 border">{{ kendaraan.kendaraan_warna }}</td>
+            <td class="px-4 py-2 border">
+              <img
+                v-if="kendaraan.image"
+                :src="kendaraan.image"
+                alt="gambar kendaraan"
+                class="w-16 h-10 object-cover rounded"
+              />
+              <span v-else class="text-gray-400 italic">Tidak ada gambar</span>
+            </td>
+            <td class="px-4 py-2 border text-center space-x-2">
+              <button
+                v-if="canEdit"
                 @click="$router.push(`/kendaraan/${kendaraan.kendaraan_id}/edit`)"
                 class="px-2 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600"
-                >
+              >
                 Edit
-            </button>
-            <button
-              v-if="canDelete"
-              @click="handleDelete(kendaraan.kendaraan_id)"
-              class="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600"
-            >
-              Hapus
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+              </button>
+              <button
+                v-if="canDelete"
+                @click="handleDelete(kendaraan.kendaraan_id)"
+                class="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+              >
+                Hapus
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
     <!-- Empty state -->
     <div v-if="!kendaraanStore.loading && !kendaraanStore.kendaraans.length" class="text-gray-500">
@@ -83,6 +91,7 @@
   </div>
 </main-layout>
 </template>
+
 
 <script setup>
 import { onMounted, computed } from 'vue'
