@@ -1,4 +1,5 @@
 <template>
+<main-layout>
   <div class="p-6">
     <div class="flex justify-between items-center mb-4">
       <h1 class="text-2xl font-bold">Data Kendaraan</h1>
@@ -80,12 +81,16 @@
       Tidak ada data kendaraan.
     </div>
   </div>
+</main-layout>
 </template>
 
 <script setup>
 import { onMounted, computed } from 'vue'
 import { useKendaraanStore } from '@/stores/kendaraan'
 import { useAuthStore } from '@/stores/auth'
+import MainLayout from '@/layouts/MainLayouts.vue'
+
+
 
 const kendaraanStore = useKendaraanStore()
 const authStore = useAuthStore()
@@ -109,4 +114,4 @@ const handleDelete = async (id) => {
     }
   }
 }
-</script>
+</script> 

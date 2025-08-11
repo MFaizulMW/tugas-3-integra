@@ -1,68 +1,88 @@
 <template>
+<main-layout>
   <div class="p-6 max-w-xl mx-auto">
-    <h1 class="text-2xl font-bold mb-4">Edit Kendaraan</h1>
+    <div class="border rounded-lg shadow-sm bg-white p-6">
+      <h1 class="text-2xl font-bold mb-4">Edit Kendaraan</h1>
 
-    <form @submit.prevent="submitForm" class="space-y-4">
+      <form @submit.prevent="submitForm" class="space-y-4">
+        <!-- Kode Kendaraan -->
+        <div>
+          <label class="block mb-1 font-semibold">Kode Kendaraan</label>
+          <input v-model="form.kendaraan_kode" type="text" required class="input" />
+        </div>
 
-      <!-- Kode Kendaraan -->
-      <div>
-        <label class="block mb-1 font-semibold">Kode Kendaraan</label>
-        <input v-model="form.kendaraan_kode" type="text" required class="input" />
-      </div>
+        <!-- Nama Kendaraan -->
+        <div>
+          <label class="block mb-1 font-semibold">Nama Kendaraan</label>
+          <input v-model="form.kendaraan" type="text" required class="input" />
+        </div>
 
-      <!-- Nama Kendaraan -->
-      <div>
-        <label class="block mb-1 font-semibold">Nama Kendaraan</label>
-        <input v-model="form.kendaraan" type="text" required class="input" />
-      </div>
+        <!-- Tahun -->
+        <div>
+          <label class="block mb-1 font-semibold">Tahun</label>
+          <input v-model="form.kendaraan_tahun" type="number" required class="input" />
+        </div>
 
-      <!-- Tahun -->
-      <div>
-        <label class="block mb-1 font-semibold">Tahun</label>
-        <input v-model="form.kendaraan_tahun" type="number" required class="input" />
-      </div>
+        <!-- Jenis -->
+        <div>
+          <label class="block mb-1 font-semibold">Jenis Kendaraan</label>
+          <input v-model="form.kendaraan_jenis" type="text" required class="input" />
+        </div>
 
-      <!-- Jenis -->
-      <div>
-        <label class="block mb-1 font-semibold">Jenis Kendaraan</label>
-        <input v-model="form.kendaraan_jenis" type="text" required class="input" />
-      </div>
+        <!-- Nomor Polisi -->
+        <div>
+          <label class="block mb-1 font-semibold">Nomor Polisi</label>
+          <input v-model="form.kendaraan_nomor" type="text" required class="input" />
+        </div>
 
-      <!-- Nomor Polisi -->
-      <div>
-        <label class="block mb-1 font-semibold">Nomor Polisi</label>
-        <input v-model="form.kendaraan_nomor" type="text" required class="input" />
-      </div>
+        <!-- Mesin -->
+        <div>
+          <label class="block mb-1 font-semibold">Mesin</label>
+          <input v-model="form.kendaraan_mesin" type="text" required class="input" />
+        </div>
 
-      <!-- Mesin -->
-      <div>
-        <label class="block mb-1 font-semibold">Mesin</label>
-        <input v-model="form.kendaraan_mesin" type="text" required class="input" />
-      </div>
+        <!-- Warna -->
+        <div>
+          <label class="block mb-1 font-semibold">Warna</label>
+          <input v-model="form.kendaraan_warna" type="text" required class="input" />
+        </div>
 
-      <!-- Warna -->
-      <div>
-        <label class="block mb-1 font-semibold">Warna</label>
-        <input v-model="form.kendaraan_warna" type="text" required class="input" />
-      </div>
+        <!-- Image URL (optional) -->
+        <div>
+          <label class="block mb-1 font-semibold">URL Gambar</label>
+          <input v-model="form.image" type="text" placeholder="URL gambar kendaraan" class="input" />
+        </div>
 
-      <!-- Image URL (optional) -->
-      <div>
-        <label class="block mb-1 font-semibold">URL Gambar</label>
-        <input v-model="form.image" type="text" placeholder="URL gambar kendaraan" class="input" />
-      </div>
-
-      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-        Simpan Perubahan
-      </button>
-    </form>
+        <!-- Tombol Aksi -->
+        <div class="flex gap-2">
+          <button
+            type="submit"
+            class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          >
+            Simpan Perubahan
+          </button>
+          <router-link
+            to="/kendaraan"
+            class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 flex items-center justify-center"
+          >
+            Kembali
+          </router-link>
+        </div>
+      </form>
+    </div>
   </div>
+</main-layout>
 </template>
+
+
+
 
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useKendaraanStore } from '@/stores/kendaraan'
+import MainLayout from '@/layouts/MainLayouts.vue'
+
 
 const route = useRoute()
 const router = useRouter()
@@ -123,4 +143,8 @@ onMounted(() => {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
+
 </style>
+
+
