@@ -1,0 +1,17 @@
+{
+    "name": "faiz/tugas-3-integra",
+    "description": "Tugas 3 Integra Backend",
+    "autoload": {
+    "psr-4": {
+        "App\\Controllers\\": "controllers/",
+        "App\\Models\\": "models/",
+        "App\\Config\\": "config/",
+        "App\\Middleware\\": "middleware/",
+        "App\\Routes\\": "routes/"
+    }
+}
+
+
+,
+    "require": {}
+}
